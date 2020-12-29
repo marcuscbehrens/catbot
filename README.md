@@ -81,6 +81,8 @@ Here the instructions on the ardupilot are pretty important (under first steps)
 1. set LOIT_TYPE to 1 to always face bow on loiter to the loiter point
 1. set MIS_DONE_BEHAVE to 1 loiter after mission complete to simply loiter after the mission instead of hodl which would let you slip down the river
 
+1. find out the ip address of your gcs and put this into the udp configration in rpanion
 
+## configuring 3g connectivity
 
 
