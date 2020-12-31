@@ -82,7 +82,18 @@ Here the instructions on the ardupilot are pretty important (under first steps)
 1. set MIS_DONE_BEHAVE to 1 loiter after mission complete to simply loiter after the mission instead of hodl which would let you slip down the river
 
 1. find out the ip address of your gcs and put this into the udp configration in rpanion
+1. find out the streaming address of the rpanion video and put this into qgroundcontrol
 
 ## configuring 3g connectivity
+1. configure usb stick to not use pin anymore on a mac or windows pc
+plug usb stick to pi
+it should turn cyan, blue or green steady
+pi should now have internet
 
+1. attach monitor, keyboard and mouse to pi
+login with pi and raspberry
+check that internet is there by doing a get on 4xb.de
+sudo apt-get install to be able to boot to desktop
 
+download linux version of zero tier from command line
+zerotier-cli join with your zero tier network id
