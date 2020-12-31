@@ -15,7 +15,6 @@ See files in this repo.
 1. hook up tgy-ia6c receiver via a female to female dupont cable wiring gnd, vcc and ppm to the slots marked Sbs on the f405 wing
 
 ## software
-1. download and burn rpanion0.7 image to a 16 gb sd card and put sd card into the pi
 1. update firmware of thy-i6s transmitter with 2.0.0.58 version from hobbyking website using a usb cable
 1. download and install mission planner for windows (yes, qgroundcontrol would also do the job but all docs on the ardupilot side are about mission planner so i bit the bullet and pulled out an old windows laptop my daughter had used in the past)
 1. enable udp port 14 withing windows firewall to allow udp traffic coming from the raspberry pi to reach the mission planner app running on Windows
@@ -81,14 +80,26 @@ Here the instructions on the ardupilot are pretty important (under first steps)
 1. set LOIT_TYPE to 1 to always face bow on loiter to the loiter point
 1. set MIS_DONE_BEHAVE to 1 loiter after mission complete to simply loiter after the mission instead of hodl which would let you slip down the river
 
-1. find out the ip address of your gcs and put this into the udp configration in rpanion
-1. find out the streaming address of the rpanion video and put this into qgroundcontrol
+## configuring wifi connectivity
+1. download and burn rpanion0.7 image to a 16 gb sd card and put sd card into the pi
+1. start up the power on the pi and the rest of the devices
+1. connect to the rpanion wifi opened by the pi with passcode rpanion123 from any computer
+1. open up the rpanion server web ui at 10.0.2.100:3000 in a browser
+1. bring up the flight controller tab
+1. change the baud rate from 9600 to 921600 and the protocol to mavlink 2.0
+1. start telemetry > you should see packets streaming in from the flight controller
+1. connect the computer with your gcs software to the rpanion wifi network
+1. find out the ip address of your gcs computer in the wifi settings
+1. go back to the rpanion server ui in the browser and configure the ip address and port under the tab flight controller. if your ip address is for example 10.0.2.171 then put in a new output at 10.0.2.171:14550. this will work for both mission planner and qgroundcontrol as the default port. repeat this for all other devices you want to use gcs software on.
+1. turn on video streaming in the rpanion server ui and take note of the rtsp streaming address. for me it only worked when entering it in qgroundcontrol. setup with gstreamer with mission planner was not possible to get to work.
 
 ## configuring 3g connectivity
-1. configure usb stick to not use pin anymore on a mac or windows pc
-plug usb stick to pi
-it should turn cyan, blue or green steady
-pi should now have internet
+1. configure usb stick to not use a pin anymore on a mac or windows pc
+1. plug usb stick into pi
+1. it should turn cyan, blue or green steady
+1. pi should now have internet via 3g
+1. connect via ssh to the pi from e.g. a Mac or using putty on the PC
+
 
 1. attach monitor, keyboard and mouse to pi
 login with pi and raspberry
