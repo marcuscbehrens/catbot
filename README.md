@@ -94,17 +94,24 @@ Here the instructions on the ardupilot are pretty important (under first steps)
 1. turn on video streaming in the rpanion server ui and take note of the rtsp streaming address. for me it only worked when entering it in qgroundcontrol. setup with gstreamer with mission planner was not possible to get to work.
 
 ## configuring 3g connectivity
+1. get yourself an account and create a new (virtual) network at my.zerotier.com. this is necessary as otherwise you cannot connect the ground control software and the companion computer aka pi anymore as they will be not in the same (local) network anymore and zerotier will create a virtual private network where they seem to be in the same network to all applications but no one else cget into the vpn if you do not let them.
+1. download the windows, mac, android or ios zerotier app from the zerotier site to the device on which you want to run the ground control station. to not confuse things i chose another device then the one i'm connecting with via wifi.
+1. join your network from this device by entering the network id and in zerotier central authorize the device. it should show up in zerotier central as "online" 
+1. download linux version of zero tier from command line with this command: "curl -s https://install.zerotier.com | sudo bash"
+zerotier-cli join with your zero tier network id
 1. configure usb stick to not use a pin anymore on a mac or windows pc
 1. plug usb stick into pi
 1. it should turn cyan, blue or green steady
 1. pi should now have internet via 3g
 1. connect via ssh to the pi from e.g. a Mac or using putty on the PC
+1. login with user pi and password raspberry
+1. check that internet is there by doing a wget or ping on any web address (e.g. ping 4xb.de)
+1. download and install zerotier (it will be downloaded, installed and automatically started and will also automatically start on next boot) using this command: "curl -s https://install.zerotier.com | sudo bash" from the command line of the pi
+1. the next thing to do to bring the pi into the vpn is to join your zerotier network id by entering "sudo zerotier-cli join 9872387..." putting your network id there instead of 9872387...
+1. now you need to also authorize this device in the zerotier central console at my.zerotier.com. once authorized it will get its own manual ip address in your network. now the pi can be reached from the gcs and vice versa using the ip addresses listed in the zerotier central page.
+1. on the computer used for the gcs you can now bring up the rpanion server ui by using the manual ip from your zerotier vpn network appended by ":3000".
+1. in this ui you can now add the zerotier vpn ip address of the companion computer aka raspberry pi appended with ":14550" to the list of routes in the flight controller section - this will make the mavlink flight data to be also now forwarded via the vpn
+1. now it should be possible in mission planner on windows or in qgroundcontrol on mac or ios wherever you want to use your gcs to connect to the pi via 3g. i used an iphone which i can put on top of my remote control.
+1. you can also configure the video stream but make sure you know the amount of data pushed is ok with your mobile plan and also be aware of the video data competing with the mavlink data on the same connection.
 
 
-1. attach monitor, keyboard and mouse to pi
-login with pi and raspberry
-check that internet is there by doing a get on 4xb.de
-sudo apt-get install to be able to boot to desktop
-
-download linux version of zero tier from command line
-zerotier-cli join with your zero tier network id
