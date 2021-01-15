@@ -3,6 +3,8 @@ my goal was to build a solar powered boat that can cruise up and down the Neckar
 
 to plug it all together and make it work below are all the steps i took. i will also list all the components required both in hardware and software with sources where to purchase and download them.
 
+videos and other projects are described here: http://4xb.de
+
 ## 3d printing the frame
 See files in this repo.
 
