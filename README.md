@@ -77,6 +77,7 @@ Here the instructions on the ardupilot are pretty important (under first steps)
 1. set ACRO_TURN_RATE to 30 degrees per second (making a turn to find out if it is more or less in your case)
 1. set ATC_STR_RAT_FF to 2
 1. set PILOT_STEER_TYPE to 3 to not reverse when going backward
+1. set WP_PIVOT_ANGLE to 100 to avoid that with the default of 60 and a lot of wind or current the pivot turn kicks in too early
 
 ## part 4 - misc parameter settings
 1. set LOIT_TYPE to 1 to always face bow on loiter to the loiter point
